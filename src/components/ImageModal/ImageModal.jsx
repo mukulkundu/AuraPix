@@ -3,7 +3,6 @@ import { X } from "lucide-react";
 import unsplashApiKey from "../../config/config";
 
 export default function ImageModal({closeModal, imgData}){
-    console.log(imgData);
     
     // TO-DO
     const downloadImg = async () => {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import Logo from "../../assets/Logo.png"
+import Logo2 from "../../assets/Logo2.png"
 import { useNavigate, Link, useLocation } from "react-router-dom";
 
 export default function Header() {
@@ -153,7 +154,14 @@ export default function Header() {
                         <img
                             src={Logo}
                             alt="Logo"
-                            className="w-12 h-auto sm:w-16 md:w-20 mx-2 sm:mx-3 md:mx-4 my-2 rounded-md object-contain"
+                            className="w-12 dark:hidden h-auto sm:w-16 md:w-20 mx-2 sm:mx-3 md:mx-4 my-2 rounded-md object-contain"
+                        />
+                    </Link>
+                    <Link to='/' onClick={() => setActiveItem('')}>
+                        <img
+                            src={Logo2}
+                            alt="Logo"
+                            className="w-12 hidden dark:inline h-auto sm:w-16 md:w-20 mx-2 sm:mx-3 md:mx-4 my-2 rounded-md object-contain"
                         />
                     </Link>
                     <div className="flex-1 py-2 pr-2">

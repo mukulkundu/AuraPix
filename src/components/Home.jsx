@@ -19,6 +19,8 @@ export default function Home() {
     const col1 = []
     const col2 = []
     const col3 = []
+    
+    
 
     useEffect(() => {
         fetch(`https://api.unsplash.com/photos?page=${pageNo}&client_id=${unsplashApiKey}`)
@@ -76,11 +78,23 @@ export default function Home() {
         return () => window.removeEventListener('scroll', throttledScroll)
     }, [handleInfiniteScroll])
 
-    images?.forEach((img, index) => {
-        if (index % 3 === 0) col1.push(img);
-        else if (index % 3 === 1) col2.push(img);
-        else col3.push(img);
-    });
+
+    // To get only 2 colums when in mobile screen and otherwise 3
+    if(screen.width <640){
+        images?.forEach((img, index) => {
+            if (index % 2 === 0) col1.push(img);
+            else col2.push(img);
+        });
+    
+    }else{
+        images?.forEach((img, index) => {
+            if (index % 3 === 0) col1.push(img);
+            else if (index % 3 === 1) col2.push(img);
+            else col3.push(img);
+        });
+    }
+
+    
 
 
     return (
@@ -101,7 +115,7 @@ export default function Home() {
 
 
 
-            <div className="flex justify-center gap-4 mx-4 md:mx-8">
+            <div className="sm:flex hidden justify-center gap-4 mx-4 md:mx-8">
                 <div className="flex flex-col gap-4 w-1/3">
                     {col1.map((item, i) => (
                         <button key={item.id} onClick={() => imgData(item)}><img key={i} src={item.urls.regular} alt="" className="rounded-xl hover:scale-[1.02] cursor-pointer duration-300" loading="lazy" /></button>
@@ -117,6 +131,21 @@ export default function Home() {
                 <div className="flex flex-col gap-4 w-1/3">
                     {col3.map((item, i) => (
                         <button key={item.id} onClick={() => imgData(item)}><img key={i} src={item.urls.regular} alt="" className="rounded-xl hover:scale-[1.02] cursor-pointer duration-300" loading="lazy" /></button>
+                    ))}
+                </div>
+            </div>
+
+
+            <div className="flex sm:hidden justify-center gap-4 mx-4">
+            <div className="flex flex-col gap-4 w-1/2">
+                    {col1.map((item, i) => (
+                        <button key={item.id} onClick={() => imgData(item)}><img key={i} src={item.urls.regular} alt="" className="rounded-xl hover:scale-[1.02] cursor-pointer duration-300" loading="lazy" /></button>
+                    ))}
+                </div>
+
+                <div className="flex flex-col gap-4 w-1/2">
+                    {col2.map((item, i) => (
+                        <button key={item.id} onClick={() => imgData(item)}><img key={i} src={item.urls.regular} alt="" className="rounded-xl hover:scale-[1.03] cursor-pointer duration-300" loading="lazy" /></button>
                     ))}
                 </div>
             </div>
