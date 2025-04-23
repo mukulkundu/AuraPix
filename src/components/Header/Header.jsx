@@ -173,7 +173,7 @@ export default function Header() {
                                 placeholder="Search Images"
                                 value={searchInput}
                                 onChange={(e) => setSearchInput(e.target.value)}
-                                className="w-full bg-gray-200 dark:bg-[#424040] py-1 sm:py-2 px-3 sm:px-6 rounded-full"
+                                className="w-full text-sm sm:text-md bg-gray-200 dark:bg-[#424040] py-2 px-3 sm:px-6 rounded-full"
                             />
                             <button type="submit" className="cursor-pointer dark:bg-[#424040] dark:hover:bg-[#514f4f] bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded-full ml-2 font-medium text-sm md:text-base hidden sm:inline">Search</button>
                         </form>
