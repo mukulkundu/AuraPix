@@ -90,6 +90,8 @@ export default function Header() {
         // Extract the path without slash
         const path = location.pathname.substring(1);
 
+        const decodedPath = decodeURIComponent(path);
+
         // Check if the path matches any of our nav items
         const matchingItem = navItems.find(item => {
             // For the home page
@@ -106,7 +108,7 @@ export default function Header() {
 
         // Set the active item if we found a match
         if (matchingItem) {
-            setSearchInput(path.slice(7));
+            setSearchInput(decodedPath.slice(7));
         } else {
             // Reset if no match (home page or search results)
             setSearchInput('');
