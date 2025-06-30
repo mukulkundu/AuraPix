@@ -67,7 +67,7 @@ export default function ImageModal({closeModal, imgData}){
 
                     {/* Photographer Info */}
                     <div className="flex items-center">
-                        {imgData.user.first_name+" "+ imgData.user.last_name}
+                        <span className="whitespace-nowrap overflow-hidden text-ellipsis max-w-[150px]">{imgData.user.first_name+" "+ imgData.user.last_name}</span>
                         <img src={imgData.user.profile_image.small} alt="" className="ml-2 rounded-full w-9"/>
                     </div>
                 </div>
